@@ -61,12 +61,19 @@ describe('test', () => {
       render(<App />, container);
     });
 
-    const button = document.querySelector('button');
+    const button = container.querySelector('button');
     act(() => {
       Simulate.click(button);
     });
 
-    const element = document.getElementById('saludo');
+    let element = document.getElementById('saludo');
     expect(element.innerHTML).toBe('hola');
+
+    act(() => {
+      Simulate.click(button);
+    });
+
+    element = document.getElementById('saludo');
+    expect(element).toBeNull();
   });
 });
