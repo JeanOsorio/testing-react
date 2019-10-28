@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [item, setItem] = useState(false);
+  function handleClick() {
+    setItem(!item);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +22,8 @@ function App() {
         >
           Learn React
         </a>
+        {item && <div id="saludo">hola</div>}
+        <button onClick={handleClick}>I'm a button</button>
       </header>
     </div>
   );
