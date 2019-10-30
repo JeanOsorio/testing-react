@@ -75,5 +75,12 @@ describe('test', () => {
 
     element = document.getElementById('saludo');
     expect(element).toBeNull();
+    let selector = document.getElementById('selector');
+    expect(selector.value).toBe('value2');
+
+    selector.value = 'value3';
+    Simulate.change(selector);
+
+    expect(selector.value).toBe('value3');
   });
 });

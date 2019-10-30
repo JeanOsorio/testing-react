@@ -23,6 +23,11 @@ function App() {
           Learn React
         </a>
         {item && <div id="saludo">hola</div>}
+        <select name="select" id="selector" defaultValue="value2">
+          <option value="value1">Value 1</option>
+          <option value="value2">Value 2</option>
+          <option value="value3">Value 3</option>
+        </select>
         <button onClick={handleClick}>I'm a button</button>
       </header>
     </div>
