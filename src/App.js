@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+export function App() {
   const [item, setItem] = useState(false);
+
+  function handleChange(e) {
+    console.log(e.target.value);
+  }
+
   function handleClick() {
     setItem(!item);
   }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,7 +29,12 @@ function App() {
           Learn React
         </a>
         {item && <div id="saludo">hola</div>}
-        <select name="select" id="selector" defaultValue="value2">
+        <select
+          name="select"
+          id="selector"
+          defaultValue="value2"
+          onChange={handleChange}
+        >
           <option value="value1">Value 1</option>
           <option value="value2">Value 2</option>
           <option value="value3">Value 3</option>

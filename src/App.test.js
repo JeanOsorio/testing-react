@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act, Simulate } from 'react-dom/test-utils';
+import { MemoryRouter, useHistory } from 'react-router-dom';
 import App from './App';
 
 describe('test', () => {
@@ -16,16 +17,27 @@ describe('test', () => {
     unmountComponentAtNode(container);
     container.remove();
     container = null;
+    jest.clearAllMocks();
   });
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    render(<App />, div);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+      div
+    );
     unmountComponentAtNode(div);
   });
 
   it('should click the button', () => {
     act(() => {
-      render(<App />, container);
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+        container
+      );
     });
 
     act(() => {
@@ -56,9 +68,14 @@ describe('test', () => {
     expect(element.innerHTML).toBe('hola');
   });
 
-  it('should click the button', () => {
+  it('various test', () => {
     act(() => {
-      render(<App />, container);
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+        container
+      );
     });
 
     const button = container.querySelector('button');
